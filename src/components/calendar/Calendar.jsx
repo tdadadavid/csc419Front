@@ -88,11 +88,11 @@ const Calendar = () => {
 				<h1>Birthday Calendar</h1>
 				<div className="calendar-navigation">
 					<button onClick={navigateToPrevMonth} className="nav-button">
-						<i className="fas fa-chevron-left"></i>
+						<i className="fas fa-chevron-left">⏮️</i>
 					</button>
 					<h2>{calendarData.dateFormatted}</h2>
 					<button onClick={navigateToNextMonth} className="nav-button">
-						<i className="fas fa-chevron-right"></i>
+						<i className="fas fa-chevron-right">⏭️</i>
 					</button>
 				</div>
 			</div>
@@ -115,7 +115,6 @@ const Calendar = () => {
 					const day = index + 1;
 					const dayBirthdays = calendarData.birthdays[day] || [];
 					const hasBirthdays = dayBirthdays.length > 0;
-
 
 					return (
 						<div

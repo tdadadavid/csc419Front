@@ -19,11 +19,10 @@ import Layout from "./components/layout/Layout";
 import "./App.css";
 import { AuthProvider } from "./components/auth/AuthContext";
 
-
 export const App = () => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [darkMode, setDarkMode] = useState(false);
+	const [darkMode, setDarkMode] = useState(true); // Default to dark mode
 
 	// Check if user is authenticated
 	useEffect(() => {
@@ -40,9 +39,9 @@ export const App = () => {
 
 		checkAuth();
 
-		// Check for dark mode preference
-		const savedDarkMode = localStorage.getItem("darkMode") === "true";
-		setDarkMode(savedDarkMode);
+		// Check for dark mode preference - default to true if not set
+		const savedDarkMode = localStorage.getItem("darkMode");
+		setDarkMode(savedDarkMode !== null ? savedDarkMode === "true" : true);
 	}, []);
 
 	// Toggle dark mode
@@ -54,8 +53,10 @@ export const App = () => {
 		// Apply dark mode to body
 		if (newDarkMode) {
 			document.body.classList.add("dark-mode");
+			document.documentElement.classList.add("dark-theme");
 		} else {
 			document.body.classList.remove("dark-mode");
+			document.documentElement.classList.remove("dark-theme");
 		}
 	};
 
@@ -63,8 +64,10 @@ export const App = () => {
 	useEffect(() => {
 		if (darkMode) {
 			document.body.classList.add("dark-mode");
+			document.documentElement.classList.add("dark-theme");
 		} else {
 			document.body.classList.remove("dark-mode");
+			document.documentElement.classList.remove("dark-theme");
 		}
 	}, [darkMode]);
 
@@ -77,7 +80,7 @@ export const App = () => {
 		);
 	}
 
-  return (
+	return (
 		<AuthProvider>
 			<Router>
 				<div className={`app ${darkMode ? "dark-theme" : "light-theme"}`}>

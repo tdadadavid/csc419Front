@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 import { AuthService } from "./auth";
-import AuthContext from "./AuthContext"
+import AuthContext from "./AuthContext";
+import Container from "../layout/Container";
 
 const Login = ({ setUser }) => {
-    const { login } = useContext(AuthContext);
+	const { login } = useContext(AuthContext);
 	const [credentials, setCredentials] = useState({
 		email: "",
 		password: "",
@@ -15,7 +16,7 @@ const Login = ({ setUser }) => {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
-  const handleChange = (e) => {
+	const handleChange = (e) => {
 		const { name, value, type, checked } = e.target;
 		setCredentials({
 			...credentials,
@@ -28,14 +29,11 @@ const Login = ({ setUser }) => {
 		setLoading(true);
 		setError("");
 
-    try {
-
-      const response = await AuthService.login(credentials)
-
-      console.log(response)
-
-      setUser(response.user);
-      login(response.user)
+		try {
+			const response = await AuthService.login(credentials);
+			console.log(response);
+			setUser(response.user);
+			login(response.user);
 			navigate("/");
 		} catch (error) {
 			console.error("Login error:", error);
@@ -69,6 +67,7 @@ const Login = ({ setUser }) => {
 							onChange={handleChange}
 							required
 							placeholder="Enter your email"
+							className="form-control"
 						/>
 					</div>
 
@@ -82,6 +81,7 @@ const Login = ({ setUser }) => {
 							onChange={handleChange}
 							required
 							placeholder="Enter your password"
+							className="form-control"
 						/>
 					</div>
 
@@ -97,7 +97,13 @@ const Login = ({ setUser }) => {
 					</div>
 
 					<button type="submit" className="login-button" disabled={loading}>
-						{loading ? "Signing in..." : "Sign In"}
+						{loading ? (
+							<>
+								<div className="button-spinner"></div> Signing in...
+							</>
+						) : (
+							"Sign In"
+						)}
 					</button>
 				</form>
 

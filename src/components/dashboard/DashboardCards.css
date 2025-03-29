@@ -1,6 +1,34 @@
+.statistics-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  width: 100%;
+  height: 100%;
+}
+
+.statistics-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.chart-container {
+  padding: 0.5rem;
+  height: 350px;
+  position: relative;
+}
+
 /* Activity logs styling */
 .activity-logs {
-  grid-column: 1 / -1; /* Make it span full width in the grid */
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.activity-logs:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .activity-table {
@@ -12,10 +40,12 @@
   display: grid;
   grid-template-columns: 1fr 0.7fr 0.7fr 2fr 1fr;
   padding: 0.75rem 1rem;
-  font-weight: 600;
-  font-size: 0.875rem;
+  font-weight: 500;
+  font-size: 0.75rem;
   border-bottom: 1px solid var(--border-color);
-  color: var(--gray-500);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .activity-table-row {
@@ -23,15 +53,13 @@
   grid-template-columns: 1fr 0.7fr 0.7fr 2fr 1fr;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.2s;
+  transition: background-color 0.15s;
+  font-size: 0.875rem;
+  cursor: pointer;
 }
 
 .activity-table-row:hover {
-  background-color: var(--gray-50);
-}
-
-.dark-theme .activity-table-row:hover {
-  background-color: var(--gray-700);
+  background-color: var(--sidebar-hover);
 }
 
 .activity-cell {
@@ -51,8 +79,8 @@
 }
 
 .activity-cell.time {
-  font-size: 0.875rem;
-  color: var(--gray-500);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
 }
 
 .view-all {
@@ -62,11 +90,20 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--primary-color);
+  transition: opacity 0.15s;
 }
 
 .view-all:hover {
   text-decoration: none;
   opacity: 0.8;
+}
+
+.view-all svg {
+  transition: transform 0.15s;
+}
+
+.view-all:hover svg {
+  transform: translateX(2px);
 }
 
 /* Responsive adjustments for mobile */

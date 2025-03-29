@@ -11,6 +11,7 @@
   transform: translateX(-100%);
   transition: transform var(--transition-speed);
   z-index: 90;
+  overflow-y: auto;
 }
 
 .sidebar.open {
@@ -44,6 +45,7 @@
   color: var(--text-color);
   font-weight: 500;
   transition: background-color 0.2s;
+  text-decoration: none;
 }
 
 .nav-item:hover {

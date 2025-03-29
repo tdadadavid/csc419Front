@@ -1,0 +1,30 @@
+/* Add this to a new file called src/components/auth/dark-input-fix.css */
+
+/* Specific overrides for dark form inputs */
+html.dark-theme input.form-control,
+html.dark-theme textarea.form-control,
+html.dark-theme select.form-control {
+  background-color: #2d2d2d !important;
+  color: #f5f5f5 !important;
+  border-color: #333 !important;
+}
+
+html.dark-theme input.form-control::placeholder,
+html.dark-theme textarea.form-control::placeholder,
+html.dark-theme select.form-control::placeholder {
+  color: #888 !important;
+}
+
+html.dark-theme .login-card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+}
+
+html.dark-theme .login-button {
+  background-color: #4287f5 !important;
+  color: white !important;
+}
+
+html.dark-theme .auth-links a {
+  color: #4287f5 !important;
+}

@@ -14,6 +14,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 						className={({ isActive }) =>
 							isActive ? "nav-item active" : "nav-item"
 						}
+						onClick={onClose}
 						end
 					>
 						<i className="fas fa-tachometer-alt"></i>
@@ -25,6 +26,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 						className={({ isActive }) =>
 							isActive ? "nav-item active" : "nav-item"
 						}
+						onClick={onClose}
 					>
 						<i className="fas fa-calendar-alt"></i>
 						<span>Calendar</span>
@@ -35,6 +37,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 						className={({ isActive }) =>
 							isActive ? "nav-item active" : "nav-item"
 						}
+						onClick={onClose}
 					>
 						<i className="fas fa-users"></i>
 						<span>Staff</span>
@@ -47,6 +50,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 						className={({ isActive }) =>
 							isActive ? "nav-item active" : "nav-item"
 						}
+						onClick={onClose}
 					>
 						<i className="fas fa-bell"></i>
 						<span>Notification Settings</span>
@@ -57,6 +61,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 						className={({ isActive }) =>
 							isActive ? "nav-item active" : "nav-item"
 						}
+						onClick={onClose}
 					>
 						<i className="fas fa-history"></i>
 						<span>Notification Logs</span>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./DashboardCards.css";
+import "./Dashboard.css";
 import StaffDetailModal from "./StaffDetailsModal";
 
 const UpcomingBirthdays = ({ birthdays }) => {
@@ -10,7 +10,7 @@ const UpcomingBirthdays = ({ birthdays }) => {
 		: Object.values(birthdays);
 
 	return (
-		<div className="dashboard-card upcoming-birthdays">
+		<div className="upcoming-birthdays">
 			<div className="card-header">
 				<h2>Upcoming Birthdays</h2>
 				<span className="badge success">Next 7 Days</span>
@@ -30,13 +30,24 @@ const UpcomingBirthdays = ({ birthdays }) => {
 									<p className="department">{staff.department}</p>
 								</div>
 								<div className="birthday-badge upcoming">
-									<i className="fas fa-hourglass-half"></i>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+									>
+										<circle cx="12" cy="12" r="10"></circle>
+										<polyline points="12 6 12 12 16 14"></polyline>
+									</svg>
 									<span>
 										{staff.days_until_birthday === 1
 											? "Tomorrow"
-											: `${
-													calculateDaysUntilBirthday(staff)
-											  } days`}
+											: `${Math.ceil(calculateDaysUntilBirthday(staff))} days`}
 									</span>
 								</div>
 							</div>
@@ -44,7 +55,22 @@ const UpcomingBirthdays = ({ birthdays }) => {
 					</div>
 				) : (
 					<div className="empty-state">
-						<i className="far fa-calendar"></i>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						>
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="8" y1="15" x2="16" y2="15"></line>
+							<line x1="9" y1="9" x2="9.01" y2="9"></line>
+							<line x1="15" y1="9" x2="15.01" y2="9"></line>
+						</svg>
 						<p>No upcoming birthdays</p>
 					</div>
 				)}
@@ -62,6 +88,12 @@ const UpcomingBirthdays = ({ birthdays }) => {
 
 // Helper function to calculate days until birthday if not already provided
 const calculateDaysUntilBirthday = (staff) => {
+	// If the days_until_birthday property exists, use it
+	if (staff.days_until_birthday !== undefined) {
+		return staff.days_until_birthday;
+	}
+
+	// Otherwise calculate it
 	const today = new Date();
 	const birthDate = new Date(staff.date_of_birth);
 	const nextBirthday = new Date(

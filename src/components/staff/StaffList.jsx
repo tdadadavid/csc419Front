@@ -212,7 +212,7 @@ const StaffList = () => {
 														className="edit-button"
 														title="Edit"
 													>
-														<i className="fas fa-edit"></i>
+														<i className="fas fa-edit">Edit</i>
 													</button>
 
 													<button
@@ -220,7 +220,7 @@ const StaffList = () => {
 														className="delete-button"
 														title="Delete"
 													>
-														<i className="fas fa-trash-alt"></i>
+														<i className="fas fa-trash-alt">Delete</i>
 													</button>
 												</div>
 											</td>

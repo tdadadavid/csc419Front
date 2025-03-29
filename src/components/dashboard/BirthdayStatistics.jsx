@@ -9,7 +9,7 @@ import {
 	Tooltip,
 	Legend,
 } from "chart.js";
-import "./DashboardCards.css";
+import "./BirthdayStatistics.css";
 
 // Register ChartJS components
 ChartJS.register(
@@ -30,6 +30,9 @@ const BirthdayStatistics = ({ statistics }) => {
 	const monthNames = sortedStats.map((month) => month.name);
 	const counts = sortedStats.map((month) => month.count);
 
+	// Check if we're in dark mode
+	const isDarkMode = document.body.classList.contains("dark-theme");
+
 	const chartData = {
 		labels: monthNames,
 		datasets: [
@@ -37,34 +40,35 @@ const BirthdayStatistics = ({ statistics }) => {
 				label: "Number of Birthdays",
 				data: counts,
 				backgroundColor: [
-					"rgba(54, 162, 235, 0.6)", // January
-					"rgba(153, 102, 255, 0.6)", // February
-					"rgba(75, 192, 192, 0.6)", // March
-					"rgba(255, 159, 64, 0.6)", // April
-					"rgba(255, 99, 132, 0.6)", // May
-					"rgba(255, 206, 86, 0.6)", // June
-					"rgba(54, 162, 235, 0.6)", // July
-					"rgba(75, 192, 192, 0.6)", // August
-					"rgba(153, 102, 255, 0.6)", // September
-					"rgba(255, 159, 64, 0.6)", // October
-					"rgba(255, 99, 132, 0.6)", // November
-					"rgba(255, 206, 86, 0.6)", // December
+					"rgba(0, 112, 243, 0.8)", // January
+					"rgba(0, 112, 243, 0.8)", // February
+					"rgba(0, 112, 243, 0.8)", // March
+					"rgba(0, 112, 243, 0.8)", // April
+					"rgba(0, 112, 243, 0.8)", // May
+					"rgba(0, 112, 243, 0.8)", // June
+					"rgba(0, 112, 243, 0.8)", // July
+					"rgba(0, 112, 243, 0.8)", // August
+					"rgba(0, 112, 243, 0.8)", // September
+					"rgba(0, 112, 243, 0.8)", // October
+					"rgba(0, 112, 243, 0.8)", // November
+					"rgba(0, 112, 243, 0.8)", // December
 				],
 				borderColor: [
-					"rgba(54, 162, 235, 1)",
-					"rgba(153, 102, 255, 1)",
-					"rgba(75, 192, 192, 1)",
-					"rgba(255, 159, 64, 1)",
-					"rgba(255, 99, 132, 1)",
-					"rgba(255, 206, 86, 1)",
-					"rgba(54, 162, 235, 1)",
-					"rgba(75, 192, 192, 1)",
-					"rgba(153, 102, 255, 1)",
-					"rgba(255, 159, 64, 1)",
-					"rgba(255, 99, 132, 1)",
-					"rgba(255, 206, 86, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
+					"rgba(0, 112, 243, 1)",
 				],
 				borderWidth: 1,
+				borderRadius: 4,
 			},
 		],
 	};
@@ -77,15 +81,33 @@ const BirthdayStatistics = ({ statistics }) => {
 				display: false,
 			},
 			title: {
-				display: true,
-				text: "Birthday Statistics",
-				font: {
-					size: 16,
+				display: false,
+			},
+			tooltip: {
+				backgroundColor: isDarkMode
+					? "rgba(0, 0, 0, 0.8)"
+					: "rgba(255, 255, 255, 0.9)",
+				titleColor: isDarkMode ? "#ffffff" : "#000000",
+				bodyColor: isDarkMode ? "#e0e0e0" : "#333333",
+				borderColor: isDarkMode ? "#333333" : "#e0e0e0",
+				borderWidth: 1,
+				padding: 8,
+				cornerRadius: 4,
+				displayColors: false,
+				titleFont: {
+					size: 12,
 					weight: "bold",
+					family: "var(--font-sans)",
 				},
-				padding: {
-					top: 10,
-					bottom: 20,
+				bodyFont: {
+					size: 11,
+					family: "var(--font-sans)",
+				},
+				callbacks: {
+					label: function (context) {
+						let value = context.raw;
+						return value === 1 ? "1 staff member" : `${value} staff members`;
+					},
 				},
 			},
 		},
@@ -94,25 +116,44 @@ const BirthdayStatistics = ({ statistics }) => {
 				beginAtZero: true,
 				ticks: {
 					precision: 0,
+					color: isDarkMode ? "#a0a0a0" : "#666666",
+					font: {
+						size: 10,
+						family: "var(--font-sans)",
+					},
 				},
-				title: {
-					display: true,
-					text: "Number of Staff",
+				grid: {
+					color: isDarkMode
+						? "rgba(255, 255, 255, 0.06)"
+						: "rgba(0, 0, 0, 0.06)",
+					drawBorder: false,
 				},
 			},
 			x: {
-				title: {
-					display: true,
-					text: "Month",
+				ticks: {
+					color: isDarkMode ? "#a0a0a0" : "#666666",
+					font: {
+						size: 10,
+						family: "var(--font-sans)",
+					},
+				},
+				grid: {
+					display: false,
+					drawBorder: false,
 				},
 			},
 		},
 	};
 
 	return (
-		<div className="dashboard-card statistics-card">
-			<div className="chart-container">
-				<Bar data={chartData} options={chartOptions} height={300} />
+		<div className="statistics-container">
+			<div className="statistics-header">
+				<h2>Birthday Statistics</h2>
+			</div>
+			<div className="statistics-content">
+				<div className="chart-container">
+					<Bar data={chartData} options={chartOptions} />
+				</div>
 			</div>
 		</div>
 	);

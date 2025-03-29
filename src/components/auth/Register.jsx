@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthService } from "./auth";
-import { toast } from "react-toastify";
-import "./Login.css"; // Reuse the login styling
+import "./Login.css";
 import AuthContext from "./AuthContext";
 
 const Register = ({ setUser }) => {
+	const { login } = useContext(AuthContext);
 	const [formData, setFormData] = useState({
+		name: "",
 		email: "",
 		password: "",
+		password_confirmation: "",
 	});
 	const [errors, setErrors] = useState({});
 	const [loading, setLoading] = useState(false);
@@ -31,15 +33,18 @@ const Register = ({ setUser }) => {
 
 		try {
 			const response = await AuthService.register(formData);
-      setUser(response.user);
-			toast.success("Registration successful!");
+			setUser(response.user);
+			login(response.user);
 			navigate("/");
 		} catch (error) {
 			console.error("Registration error:", error);
 			if (error.errors) {
 				setErrors(error.errors);
 			} else {
-				toast.error(error.message || "Registration failed. Please try again.");
+				// Show error message
+				setErrors({
+					general: error.message || "Registration failed. Please try again.",
+				});
 			}
 		} finally {
 			setLoading(false);
@@ -55,6 +60,10 @@ const Register = ({ setUser }) => {
 					<h3>Create an Account</h3>
 				</div>
 
+				{errors.general && (
+					<div className="error-message">{errors.general}</div>
+				)}
+
 				<form onSubmit={handleSubmit} className="login-form">
 					<div className="form-group">
 						<label htmlFor="name">Full Name</label>
@@ -66,7 +75,7 @@ const Register = ({ setUser }) => {
 							onChange={handleChange}
 							required
 							placeholder="Enter your full name"
-							className={errors.name ? "error" : ""}
+							className={`form-control ${errors.name ? "error" : ""}`}
 						/>
 						{errors.name && <div className="error-message">{errors.name}</div>}
 					</div>
@@ -81,7 +90,7 @@ const Register = ({ setUser }) => {
 							onChange={handleChange}
 							required
 							placeholder="Enter your email"
-							className={errors.email ? "error" : ""}
+							className={`form-control ${errors.email ? "error" : ""}`}
 						/>
 						{errors.email && (
 							<div className="error-message">{errors.email}</div>
@@ -98,7 +107,7 @@ const Register = ({ setUser }) => {
 							onChange={handleChange}
 							required
 							placeholder="Enter your password"
-							className={errors.password ? "error" : ""}
+							className={`form-control ${errors.password ? "error" : ""}`}
 						/>
 						{errors.password && (
 							<div className="error-message">{errors.password}</div>
@@ -115,7 +124,9 @@ const Register = ({ setUser }) => {
 							onChange={handleChange}
 							required
 							placeholder="Confirm your password"
-							className={errors.password_confirmation ? "error" : ""}
+							className={`form-control ${
+								errors.password_confirmation ? "error" : ""
+							}`}
 						/>
 						{errors.password_confirmation && (
 							<div className="error-message">
@@ -125,7 +136,13 @@ const Register = ({ setUser }) => {
 					</div>
 
 					<button type="submit" className="login-button" disabled={loading}>
-						{loading ? "Creating Account..." : "Create Account"}
+						{loading ? (
+							<>
+								<div className="button-spinner"></div> Creating Account...
+							</>
+						) : (
+							"Create Account"
+						)}
 					</button>
 				</form>
 

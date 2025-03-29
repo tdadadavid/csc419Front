@@ -1,11 +1,10 @@
-// src/components/dashboard/Dashboard.jsx
 import React, { useState, useEffect } from "react";
 import api from "../../services/axios";
 import TodayBirthdays from "./TodayBirthdays";
 import UpcomingBirthdays from "./UpcomingBirthdays";
 import BirthdayStatistics from "./BirthdayStatistics";
 import NotificationActivity from "./NotificationActivity";
-import BirthdayCelebrationModal from "../staff/BirthCelebrationModel";
+import BirthdayCelebration from "../birthdays/BirthdayCelebration";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -85,12 +84,12 @@ const Dashboard = () => {
 				</div>
 			</div>
 
-			{/* Statistics Chart Section - Full Width */}
+			{/* Statistics Chart Section */}
 			<div className="statistics-section">
 				<BirthdayStatistics statistics={dashboardData.months} />
 			</div>
 
-			{/* Birthday Cards Section - Two Columns */}
+			{/* Birthday Cards Section */}
 			<div className="birthdays-section">
 				<TodayBirthdays
 					birthdays={dashboardData.todayBirthdays}
@@ -99,14 +98,14 @@ const Dashboard = () => {
 				<UpcomingBirthdays birthdays={dashboardData.upcomingBirthdays} />
 			</div>
 
-			{/* Notification Activity Section - Full Width */}
+			{/* Notification Activity Section */}
 			<div className="activity-section">
 				<NotificationActivity logs={dashboardData.recentLogs} />
 			</div>
 
-			{/* Birthday Celebration Modal */}
+			{/* Modern Birthday Celebration Modal */}
 			{selectedCelebrant && showCelebrationModal && (
-				<BirthdayCelebrationModal
+				<BirthdayCelebration
 					staff={selectedCelebrant}
 					onClose={handleCloseModal}
 				/>
