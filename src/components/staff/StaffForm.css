@@ -1,0 +1,72 @@
+.staff-form-container {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.staff-form-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.staff-form {
+  max-width: 600px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancel-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dark-theme .cancel-button {
+  background-color: var(--gray-700);
+  color: var(--gray-300);
+}
+
+.save-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.save-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.save-button:disabled {
+  background-color: var(--gray-400);
+  cursor: not-allowed;
+}
+
+.required {
+  color: var(--danger-color);
+}
+
+.staff-form-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  gap: 1rem;
+}

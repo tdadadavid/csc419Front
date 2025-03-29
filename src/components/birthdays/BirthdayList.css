@@ -1,0 +1,65 @@
+.birthday-list-container {
+  padding: 20px 0;
+}
+
+.list-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.list-subtitle {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.empty-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.empty-list i {
+  font-size: 3rem;
+  color: #d1d5db;
+  margin-bottom: 15px;
+}
+
+.empty-list p {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.staff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.birthday-list-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(79, 134, 247, 0.1);
+  border-left-color: #4f86f7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+

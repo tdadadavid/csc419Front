@@ -1,0 +1,93 @@
+/* Activity logs styling */
+.activity-logs {
+  grid-column: 1 / -1; /* Make it span full width in the grid */
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.activity-table-header {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr 0.7fr 2fr 1fr;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--gray-500);
+}
+
+.activity-table-row {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr 0.7fr 2fr 1fr;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s;
+}
+
+.activity-table-row:hover {
+  background-color: var(--gray-50);
+}
+
+.dark-theme .activity-table-row:hover {
+  background-color: var(--gray-700);
+}
+
+.activity-cell {
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+
+.activity-cell.staff-name {
+  font-weight: 500;
+}
+
+.activity-cell.message {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-cell.time {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.view-all {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.view-all:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .activity-table-header, 
+  .activity-table-row {
+    grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+  }
+  
+  .activity-cell.message {
+    display: none; /* Hide message column on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .activity-table-header, 
+  .activity-table-row {
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+  }
+  
+  .activity-cell.time {
+    display: none; /* Hide time column on very small screens */
+  }
+}

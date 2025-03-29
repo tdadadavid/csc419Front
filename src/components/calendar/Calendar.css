@@ -1,0 +1,168 @@
+.calendar-container {
+  position: relative;
+}
+
+.calendar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-navigation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+}
+
+.nav-button:hover {
+  background-color: var(--gray-100);
+}
+
+.dark-theme .nav-button:hover {
+  background-color: var(--gray-700);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-day-label {
+  text-align: center;
+  font-weight: 600;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.calendar-day {
+  aspect-ratio: 1/1;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card-bg);
+}
+
+.calendar-day.empty {
+  background-color: var(--gray-50);
+  border-color: transparent;
+}
+
+.dark-theme .calendar-day.empty {
+  background-color: var(--gray-700);
+}
+
+.calendar-day.today {
+  border-color: var(--primary-color);
+  border-width: 2px;
+}
+
+.calendar-day.has-birthdays {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.dark-theme .calendar-day.has-birthdays {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.day-number {
+  font-weight: 500;
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.today .day-number {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.day-birthdays {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.day-birthday-item {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--primary-color);
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.more-birthdays {
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+}
+
+.calendar-loading,
+.calendar-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  gap: 1rem;
+}
+
+.calendar-error i {
+  font-size: 2rem;
+  color: var(--danger-color);
+}
+
+.calendar-error button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.calendar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.dark-theme .calendar-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+  .calendar-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

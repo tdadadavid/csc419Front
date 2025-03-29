@@ -1,0 +1,116 @@
+.celebration-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.celebration-content {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.celebration-cake {
+  margin-bottom: 20px;
+}
+
+.cake {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  background-color: #f87171;
+  border-radius: 10px 10px 0 0;
+  margin: 0 auto;
+}
+
+.cake::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  width: 100%;
+  height: 20px;
+  background-color: #fca5a5;
+  border-radius: 10px 10px 0 0;
+}
+
+.cake::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: #ef4444;
+  top: 15px;
+}
+
+.candle {
+  position: absolute;
+  width: 10px;
+  height: 30px;
+  background-color: #fcd34d;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+}
+
+.flame {
+  position: absolute;
+  width: 14px;
+  height: 20px;
+  background-color: #f59e0b;
+  border-radius: 50% 50% 20% 20%;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.5s infinite alternate;
+  box-shadow: 0 0 10px #fb923c, 0 0 20px #fbbf24;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(0.9) rotate(5deg); }
+}
+
+.celebration-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4f86f7;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.celebration-name {
+  font-size: 1.2rem;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.celebration-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.celebration-actions .action-btn {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,48 @@
+.birthday-tabs-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.tabs-header {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.tab-btn:hover {
+  background-color: rgba(79, 134, 247, 0.1);
+}
+
+.tab-btn.active {
+  background-color: white;
+  color: #4f86f7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.calendar-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  color: #6b7280;
+}
+

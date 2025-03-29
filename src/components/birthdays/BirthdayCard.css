@@ -1,0 +1,121 @@
+.birthday-card {
+  display: flex;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.birthday-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-container {
+  margin-right: 20px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #4f86f7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.staff-details {
+  flex: 1;
+}
+
+.staff-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.detail-item i {
+  width: 20px;
+  margin-right: 10px;
+  color: #4f86f7;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-width: 150px;
+}
+
+.birthday-badge {
+  background-color: #4f86f7;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.days-until {
+  background-color: #f3f4f6;
+  color: #374151;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.notification-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.action-btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.email-btn {
+  background-color: #ebf5ff;
+  color: #2563eb;
+}
+
+.email-btn:hover {
+  background-color: #dbeafe;
+}
+
+.sms-btn {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.sms-btn:hover {
+  background-color: #d1fae5;
+}
+
